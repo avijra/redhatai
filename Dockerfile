@@ -1,6 +1,4 @@
 # syntax=docker/dockerfile:1
-# Build as `docker build . -t localgpt`, requires BuildKit.
-# Run as `docker run -it --mount src="$HOME/.cache",target=/root/.cache,type=bind --gpus=all localgpt`, requires Nvidia container toolkit.
 
 FROM nvidia/cuda:12.2.0-devel-ubi9
 
@@ -40,18 +38,12 @@ RUN --mount=type=cache,target=/root/.cache  pip install --timeout 100 -r require
 
 RUN --mount=type=cache,target=/root/.cache CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install --upgrade --force-reinstall llama-cpp-python
 COPY SOURCE_DOCUMENTS ./SOURCE_DOCUMENTS
-#COPY pyproject.toml run_localGPT.py ingest.py constants.py ./
-# Docker BuildKit does not support GPU during *docker build* time right now, only during *docker run*.
-# See <https://github.com/moby/buildkit/issues/1436>.
-# If this changes in the future you can `docker build --build-arg device_type=cuda  . -t localgpt` (+GPU argument to be determined).
-#ARG device_type=cpu
-#RUN --mount=type=cache,target=/root/.cache python ingest.py --device_type $device_type
+
 WORKDIR /app
 COPY . .
 
 ENV device_type=cuda
-#COPY localGPT_UI.py ./
-#CMD streamlit run localGPT_UI.py
+
 EXPOSE 8501
 ENTRYPOINT ["streamlit", "run", "redhat_ai.py", "--server.port=8501", "--server.address=0.0.0.0"]
 
