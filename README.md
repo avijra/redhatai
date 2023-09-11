@@ -3,7 +3,7 @@
 ### 🛠️ Installation:
 1. Clone the repository:
 ```
-git clone <URL-of-your-repo>
+git clone [<URL-of-your-repo>](https://github.com/avijra/redhatai.git)
 ```
 
 3. In the root folder, create a new directory:
