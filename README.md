@@ -1,5 +1,9 @@
 # redhatai 🚀
 
+![Screenshot 2023-09-11 at 10 57 32 PM](https://github.com/avijra/redhatai/assets/6593419/c58a9381-e309-4228-bd17-deef0d7ab54d)
+
+
+
 ### 🛠️ Installation:
 1. Clone the repository:
 ```
