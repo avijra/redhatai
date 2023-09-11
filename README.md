@@ -52,8 +52,8 @@ docker build . -t name_of_image:version
 
 4. Alternatively, pull images directly:
    ```
-   docker pull avijra/redhatai_vicuna-13b-gptq
-   docker pull avijra/redhatai_vicuna-7b-gptq
+   docker pull avijra/redhatai_vicuna-13b-gptq:1.0
+   docker pull avijra/redhatai_vicuna-7b-gptq:1.0
    ```
 
 
