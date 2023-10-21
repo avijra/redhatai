@@ -41,6 +41,7 @@ COPY SOURCE_DOCUMENTS ./SOURCE_DOCUMENTS
 
 WORKDIR /app
 COPY . .
+RUN chmod +x /app/redhat_ai.py
 
 ENV device_type=cuda
 
